@@ -21,18 +21,18 @@ const MedicationTable: React.FC<MedicationTableProps> = ({ age, weight, height }
     const medications = [
       { 
         name: 'ADRENALINA',
-        presentation: '1mg/ml',
-        default: weight > 40 ? '1mg dose adulto' : '0,01mg/kg',
-        dosage: weight > 40 ? '1ml' : weight > 40 ? '1ml' : `${Math.round(weight * 0.01 / 0.01)}ml`, 
-        dilution: weight > 40 ? 'Sem Diluir' : '1ml + 9ml AD',
+        presentation: '1 mg/ml',
+        default: weight > 40 ? '1 mg dose adulto' : '0,01 mg/kg',
+        dosage: weight > 40 ? '1 ml' : weight > 40 ? '1 ml' : `${Math.round(weight * 0.01 / 0.1)} ml`, 
+        dilution: weight > 40 ? 'Sem Diluir' : '1 ml + 9 ml AD',
         
       },
 
       { 
         name: 'ATROPINA',
-        presentation: '0,25mg/ml',
-        default: weight<= 5 ? '0,1mg mínimo' : weight > 20 ? '0,4mg dose adulto':'0,02mg/kg',
-        dosage: (weight*0.02<0.1? 0.1:0.02)/0.25>1.6? 1.6 : (weight*0.02<0.1? 0.1:0.02)/0.25 + 'ml', 
+        presentation: '0,25 mg/ml',
+        default: weight<= 5 ? '0,1 mg mínimo' : weight > 20 ? '0,4 mg dose adulto':'0,02 mg/kg',
+        dosage: (weight*0.02<0.1? 0.1:0.02)/0.25>1.6? 1.6 : (weight*0.02<0.1? 0.1:0.02)/0.25 + ' ml', 
         dilution: 'Sem Diluir',
         
       }
@@ -49,16 +49,20 @@ const MedicationTable: React.FC<MedicationTableProps> = ({ age, weight, height }
         <thead>
           <tr>
             <th className="border p-2">Medicação</th>
-            <th className="border p-2">Dosagem (mg)</th>
+            <th className="border p-2">Apreesntação</th>
+            <th className="border p-2">Dose Padrão</th>
             <th className="border p-2">Diluição</th>
+            <th className="border p-2">Dosagem</th>
           </tr>
         </thead>
         <tbody>
           {medications.map((med, index) => (
             <tr key={index}>
               <td className="border p-2">{med.name}</td>
-              <td className="border p-2">{med.dosage}</td>
+              <td className="border p-2">{med.presentation}</td>
+              <td className="border p-2">{med.default}</td>
               <td className="border p-2">{med.dilution}</td>
+              <td className="border p-2">{med.dosage}</td>
             </tr>
           ))}
         </tbody>
